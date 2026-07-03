@@ -88,13 +88,15 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ component, onClose, isLik
               <h2 className={styles.title}>{component.title}</h2>
               <p className={styles.type}>{component.type}</p>
               
-              <button 
-                className={`${styles.likes} ${isLiked ? styles.liked : ''}`}
-                onClick={onLike}
-              >
-                <Heart size={16} fill={isLiked ? '#ec4899' : 'transparent'} color={isLiked ? '#ec4899' : 'currentColor'} /> 
-                {component.likes || 0} likes
-              </button>
+              {component.type !== 'Abonnement' && (
+                <button 
+                  className={`${styles.likes} ${isLiked ? styles.liked : ''}`}
+                  onClick={onLike}
+                >
+                  <Heart size={16} fill={isLiked ? '#ec4899' : 'transparent'} color={isLiked ? '#ec4899' : 'currentColor'} /> 
+                  {component.likes || 0} likes
+                </button>
+              )}
             </div>
 
             <div className={styles.actionArea}>
@@ -105,8 +107,10 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ component, onClose, isLik
                     onClick={() => setShowCheckout(true)}
                   >
                     {component.priceValue === 0 || component.tag === 'Free' || component.price === 'Gratuit'
-                      ? 'Obtenir Gratuitement'
-                      : `Télécharger pour ${component.priceValue ? component.priceValue + ' FCFA' : component.price}`}
+                      ? (component.type === 'Abonnement' ? 'S\'inscrire gratuitement' : 'Obtenir Gratuitement')
+                      : (component.type === 'Abonnement' 
+                          ? `Souscrire pour ${component.priceValue ? component.priceValue + ' FCFA/mois' : component.price}` 
+                          : `Télécharger pour ${component.priceValue ? component.priceValue + ' FCFA' : component.price}`)}
                   </CreativeButton>
                 </div>
               ) : success ? (
