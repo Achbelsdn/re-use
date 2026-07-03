@@ -59,7 +59,7 @@ export async function POST(req: Request) {
     const resend = new Resend(process.env.RESEND_API_KEY);
     
     const resendResponse = await resend.emails.send({
-      from: 'onboarding@resend.dev', // Adresse de test par défaut
+      from: 'contact@resend.achbelsodjinou.me',
       to: [buyer_email],
       subject: '🎉 Votre composant Re-Use est prêt !',
       html: `

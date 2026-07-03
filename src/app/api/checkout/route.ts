@@ -93,7 +93,7 @@ export async function POST(req: Request) {
       const resend = new Resend(process.env.RESEND_API_KEY);
       
       const resendResponse = await resend.emails.send({
-        from: 'onboarding@resend.dev', // Adresse de test Resend obligatoire sans nom de domaine vérifié
+        from: 'contact@resend.achbelsodjinou.me',
         to: [email],
         subject: `🎁 Voici votre accès : ${component.title}`,
         html: `
