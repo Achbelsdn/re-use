@@ -104,7 +104,13 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ component, onClose, isLik
                 <div style={{ width: '100%', display: 'flex' }}>
                   <CreativeButton 
                     className={styles.fullWidthBtn}
-                    onClick={() => setShowCheckout(true)}
+                    onClick={() => {
+                      if (component.type === 'Abonnement' && (component.priceValue === 0 || component.price === 'Gratuit')) {
+                        window.location.href = '/';
+                      } else {
+                        setShowCheckout(true);
+                      }
+                    }}
                   >
                     {component.priceValue === 0 || component.tag === 'Free' || component.price === 'Gratuit'
                       ? (component.type === 'Abonnement' ? 'S\'inscrire gratuitement' : 'Obtenir Gratuitement')
