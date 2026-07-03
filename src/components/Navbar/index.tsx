@@ -1,11 +1,33 @@
+'use client';
 import { navLinks } from '@/constants/cmsInfo';
 import styles from './style.module.css';
 import NavLink from '../NavLink';
 import { motion } from 'framer-motion';
 import { menuSlide } from './animation';
 import SVGMask from '../ui/SVGMask';
+import { useEffect, useState } from 'react';
+import { supabasePublic } from '@/services/supabase';
 
-const NavBar = () => {
+const ADMIN_EMAIL = 'achbelneri@gmail.com';
+
+interface Props {
+  onClose?: () => void;
+}
+
+const NavBar: React.FC<Props> = ({ onClose }) => {
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    supabasePublic.auth.getSession().then(({ data: { session } }) => {
+      setIsAdmin(session?.user?.email === ADMIN_EMAIL);
+    });
+  }, []);
+
+  const visibleLinks = navLinks.filter(({ href }) => {
+    if (href === '/sell') return isAdmin;
+    return true;
+  });
+
   return (
     <motion.section
       className={styles.menu}
@@ -19,8 +41,10 @@ const NavBar = () => {
           <header className={styles.header}>
             <p>Navigation</p>
           </header>
-          {navLinks.map(({ title, href }, index) => (
-            <NavLink key={href} href={href} title={title} index={index} />
+          {visibleLinks.map(({ title, href }, index) => (
+            <div key={href} onClick={onClose}>
+              <NavLink href={href} title={title} index={index} />
+            </div>
           ))}
         </nav>
       </div>

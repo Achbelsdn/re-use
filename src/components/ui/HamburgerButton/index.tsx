@@ -10,9 +10,13 @@ interface Props {
 }
 
 const HamburgerButton: React.FC<Props> = ({ isActive, setIsActive }) => {
-  const hamburgerRef = useRef(null);
+  const hamburgerRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
+    // Sur mobile, on n'applique pas GSAP (il écraserait le CSS avec scale:0)
+    const isMobile = window.innerWidth < 1024;
+    if (isMobile) return;
+
     gsap.registerPlugin(ScrollTrigger);
     gsap.to(hamburgerRef.current, {
       scrollTrigger: {

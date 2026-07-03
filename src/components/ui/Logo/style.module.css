@@ -4,7 +4,7 @@
 }
 
 .logoImage {
-  height: 130px;
+  height: 55px;
   width: auto;
   object-fit: contain;
   transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
@@ -13,4 +13,10 @@
 
 .logoWrapper:hover .logoImage {
   opacity: 0.85;
+}
+
+@media (min-width: 1024px) {
+  .logoImage {
+    height: 80px;
+  }
 }

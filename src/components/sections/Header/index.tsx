@@ -26,7 +26,7 @@ const Header = () => {
         <Nav />
       </header>
       <HamburgerButton isActive={isActive} setIsActive={setIsActive} />
-      <AnimatePresence>{isActive && <NavBar />}</AnimatePresence>
+      <AnimatePresence>{isActive && <NavBar onClose={() => setIsActive(false)} />}</AnimatePresence>
     </>
   );
 };
