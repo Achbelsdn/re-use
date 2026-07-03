@@ -49,6 +49,9 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ component, onClose, isLik
 
       if (data.freeSuccess) {
         setSuccess(true);
+        if (data.downloadUrl && data.downloadUrl !== 'https://re-use-psi.vercel.app/templates') {
+          window.open(data.downloadUrl, '_blank');
+        }
         return;
       }
 
@@ -123,7 +126,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ component, onClose, isLik
                 <div style={{ textAlign: 'center', padding: '20px', background: 'rgba(139, 92, 246, 0.1)', borderRadius: '12px', border: '1px solid rgba(139, 92, 246, 0.3)' }}>
                   <h3 style={{ color: 'white', marginBottom: '8px' }}>C'est parti !</h3>
                   <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>
-                    Le lien de téléchargement a été envoyé à <strong>{email}</strong>. Vérifiez vos emails !
+                    Le téléchargement a démarré ! Un lien de secours a également été envoyé à <strong>{email}</strong>.
                   </p>
                 </div>
               ) : (

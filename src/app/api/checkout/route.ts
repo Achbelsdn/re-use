@@ -117,7 +117,7 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: `Erreur email: ${resendResponse.error.message}` }, { status: 500 });
       }
 
-      return NextResponse.json({ freeSuccess: true });
+      return NextResponse.json({ freeSuccess: true, downloadUrl });
     }
     // Configurer FedaPay
     const secretKey = process.env.FEDAPAY_SECRET_KEY || '';
