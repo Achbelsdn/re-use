@@ -47,7 +47,7 @@ export async function POST(req: Request) {
           try {
             const resend = new Resend(process.env.RESEND_API_KEY);
             await resend.emails.send({
-              from: 'contact@resend.achbelsodjinou.me',
+              from: 'Re-Use <contact@resend.achbelsodjinou.me>',
               to: [customMetadata.buyer_email],
               subject: '👑 Bienvenue dans l\'Accès Illimité Re-Use !',
               html: `
@@ -95,7 +95,7 @@ export async function POST(req: Request) {
         const resend = new Resend(process.env.RESEND_API_KEY);
         
         await resend.emails.send({
-          from: 'contact@resend.achbelsodjinou.me',
+          from: 'Re-Use <contact@resend.achbelsodjinou.me>',
           to: [customMetadata.buyer_email],
           subject: '🎉 Votre composant Re-Use est prêt !',
           html: `
