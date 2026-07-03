@@ -26,16 +26,8 @@ export default function PricingPage() {
 
   const handleSelectPlan = (planId: string) => {
     if (planId === 'free-plan') {
-      setSelectedPlan({
-        id: 'free-plan',
-        title: 'Plan Basique',
-        priceValue: 0,
-        price: 'Gratuit',
-        tag: 'Free',
-        type: 'Abonnement',
-        img: 'c2.jpg',
-        fromDB: false
-      });
+      window.location.href = '/';
+      return;
     } else {
       setSelectedPlan({
         id: 'pro-plan',
@@ -45,10 +37,11 @@ export default function PricingPage() {
         tag: 'Pro',
         type: 'Abonnement',
         img: 'c2.jpg',
-        fromDB: false
+        fromDB: false,
+        startCheckout: true
       });
+      setShowModal(true);
     }
-    setShowModal(true);
   };
 
   return (

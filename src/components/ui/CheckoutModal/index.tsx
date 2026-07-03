@@ -16,7 +16,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ component, onClose, isLik
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
-  const [showCheckout, setShowCheckout] = useState(false);
+  const [showCheckout, setShowCheckout] = useState(component.startCheckout || false);
 
   const isVideo = /\.(mp4|webm|ogg|mov)(\?|$)/i.test(component.image_url || component.img);
   const mediaSrc = component.fromDB 
