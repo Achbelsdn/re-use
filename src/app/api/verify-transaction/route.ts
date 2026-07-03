@@ -26,11 +26,61 @@ export async function POST(req: Request) {
     }
 
     const customMetadata = transaction.custom_metadata;
-    if (!customMetadata || !customMetadata.filename) {
+    if (!customMetadata) {
+      return NextResponse.json({ error: 'Métadonnées introuvables.' }, { status: 400 });
+    }
+
+    // Gestion de l'abonnement Pro
+    if (customMetadata.component_id === 'pro-plan') {
+      if (customMetadata.buyer_email) {
+        // Ajouter à la liste des abonnés Pro
+        const { error: insertError } = await supabaseAdmin
+          .from('pro_subscribers')
+          .upsert({ email: customMetadata.buyer_email }, { onConflict: 'email' });
+          
+        if (insertError) {
+          console.error('Erreur ajout pro_subscribers:', insertError);
+        }
+        
+        // Envoi de l'email de confirmation Pro
+        if (!sentEmailsCache.has(transactionId)) {
+          try {
+            const resend = new Resend(process.env.RESEND_API_KEY);
+            await resend.emails.send({
+              from: 'onboarding@resend.dev',
+              to: [customMetadata.buyer_email],
+              subject: '👑 Bienvenue dans l\'Accès Illimité Re-Use !',
+              html: `
+                <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #09090b; color: white; border-radius: 10px;">
+                  <h2 style="color: #8b5cf6;">Merci pour votre abonnement !</h2>
+                  <p style="color: #e5e5e5; font-size: 16px;">Vous avez désormais un accès complet à tous nos composants et templates premium.</p>
+                  <br/>
+                  <div style="text-align: center;">
+                    <a href="https://re-use-psi.vercel.app/templates" style="background: linear-gradient(135deg, #f0c27f 0%, #ec4899 50%, #8b5cf6 100%); color: white; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; display: inline-block;">
+                      Parcourir les composants
+                    </a>
+                  </div>
+                  <br/>
+                  <p style="color: #a3a3a3; font-size: 14px;"><em>Pour télécharger gratuitement un composant payant, utilisez simplement cette adresse email lors du clic sur Acheter.</em></p>
+                </div>
+              `,
+            });
+            sentEmailsCache.add(transactionId);
+          } catch (emailErr) {
+            console.error('Erreur email Pro:', emailErr);
+          }
+        }
+      }
+      
+      // On redirige vers l'accueil ou templates
+      return NextResponse.json({ url: 'https://re-use-psi.vercel.app/templates' });
+    }
+
+    if (!customMetadata.filename) {
       return NextResponse.json({ error: 'Fichier associé introuvable.' }, { status: 400 });
     }
 
-    // Generate signed URL
+    // Generate signed URL pour un composant normal
     const { data, error } = await supabaseAdmin.storage
       .from('components')
       .createSignedUrl(customMetadata.filename, 86400); // 24 hours

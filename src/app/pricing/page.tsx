@@ -2,11 +2,15 @@
 import sharedStyles from '../page-shared.module.css';
 import styles from './pricing.module.css';
 import FooterSection from '@/components/sections/FooterSection';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Check } from 'lucide-react';
 import CreativeButton from '@/components/ui/CreativeButton';
+import CheckoutModal from '@/components/ui/CheckoutModal';
 
 export default function PricingPage() {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<any>(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     let locomotive: any;
@@ -19,6 +23,33 @@ export default function PricingPage() {
       if (locomotive) locomotive.destroy();
     };
   }, []);
+
+  const handleSelectPlan = (planId: string) => {
+    if (planId === 'free-plan') {
+      setSelectedPlan({
+        id: 'free-plan',
+        title: 'Plan Basique',
+        priceValue: 0,
+        price: 'Gratuit',
+        tag: 'Free',
+        type: 'Abonnement',
+        img: 'c2.jpg',
+        fromDB: false
+      });
+    } else {
+      setSelectedPlan({
+        id: 'pro-plan',
+        title: 'Accès Illimité (Pro)',
+        priceValue: 18000,
+        price: '29$',
+        tag: 'Pro',
+        type: 'Abonnement',
+        img: 'c2.jpg',
+        fromDB: false
+      });
+    }
+    setShowModal(true);
+  };
 
   return (
     <main className={sharedStyles.main}>
@@ -38,7 +69,7 @@ export default function PricingPage() {
           </div>
           <p className={styles.desc}>Idéal pour essayer nos composants gratuits.</p>
           
-          <div className={styles.btnWrapper}>
+          <div className={styles.btnWrapper} onClick={() => handleSelectPlan('free-plan')}>
             <CreativeButton className={styles.fullWidthBtn}>Commencer</CreativeButton>
           </div>
           
@@ -61,7 +92,7 @@ export default function PricingPage() {
           </div>
           <p className={styles.desc}>Accès illimité à tous les composants et templates premium.</p>
           
-          <div className={styles.btnWrapper}>
+          <div className={styles.btnWrapper} onClick={() => handleSelectPlan('pro-plan')}>
             <CreativeButton className={styles.fullWidthBtn}>Accès Illimité</CreativeButton>
           </div>
           
@@ -76,6 +107,14 @@ export default function PricingPage() {
       </div>
 
       <FooterSection />
+
+      {showModal && selectedPlan && (
+        <CheckoutModal 
+          component={selectedPlan}
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </main>
   );
 }
+
