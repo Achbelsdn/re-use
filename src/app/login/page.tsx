@@ -44,7 +44,7 @@ export default function LoginPage() {
           </div>
         </form>
       </div>
-      <FooterSection disableParallax={true} />
+      <FooterSection />
     </main>
   );
 }

@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import styles from './page.module.css';
 import { createLocomotive } from '@/services/locomotive';
 import HeroSection from '@/components/sections/Hero';
-import AboutSection from '@/components/sections/AboutSection';
 import ProjectsSection from '@/components/sections/ProjectsSection';
 import FooterSection from '@/components/sections/FooterSection';
 import Preloader from '@/components/ui/Preloader';

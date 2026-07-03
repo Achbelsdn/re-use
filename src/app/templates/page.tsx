@@ -21,11 +21,11 @@ export default function TemplatesPage() {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>Explorer les Templates</h1>
-      <p className={styles.subtitle}>
-        Découvre notre collection de composants et templates UI/UX Premium prêts à l'emploi.
-      </p>
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <p style={{ color: 'rgba(255,255,255,0.5)' }}>En cours de développement...</p>
+      </div>
       <ProjectsSection />
-      <FooterSection disableParallax={true} />
+      <FooterSection />
     </main>
   );
 }

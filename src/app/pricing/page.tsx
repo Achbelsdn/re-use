@@ -4,6 +4,7 @@ import styles from './pricing.module.css';
 import FooterSection from '@/components/sections/FooterSection';
 import { useEffect } from 'react';
 import { Check } from 'lucide-react';
+import CreativeButton from '@/components/ui/CreativeButton';
 
 export default function PricingPage() {
   useEffect(() => {
@@ -37,7 +38,9 @@ export default function PricingPage() {
           </div>
           <p className={styles.desc}>Idéal pour essayer nos composants gratuits.</p>
           
-          <button className={styles.btnOutline}>Commencer</button>
+          <div className={styles.btnWrapper}>
+            <CreativeButton className={styles.fullWidthBtn}>Commencer</CreativeButton>
+          </div>
           
           <ul className={styles.features}>
             <li><Check className={styles.icon} size={18} /> Accès aux templates gratuits</li>
@@ -58,7 +61,9 @@ export default function PricingPage() {
           </div>
           <p className={styles.desc}>Accès illimité à tous les composants et templates premium.</p>
           
-          <button className={styles.btnSolid}>Accès Illimité</button>
+          <div className={styles.btnWrapper}>
+            <CreativeButton className={styles.fullWidthBtn}>Accès Illimité</CreativeButton>
+          </div>
           
           <ul className={styles.features}>
             <li><Check className={styles.icon} size={18} /> Accès à TOUS les templates</li>
@@ -70,7 +75,7 @@ export default function PricingPage() {
         </div>
       </div>
 
-      <FooterSection disableParallax={true} />
+      <FooterSection />
     </main>
   );
 }

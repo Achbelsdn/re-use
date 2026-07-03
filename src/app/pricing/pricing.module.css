@@ -89,41 +89,16 @@
   min-height: 50px;
 }
 
-.btnOutline {
+.btnWrapper {
+  width: 100%;
+  margin-bottom: 40px;
+  display: flex;
+}
+
+.fullWidthBtn {
   width: 100%;
   padding: 16px;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  color: white;
   font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-bottom: 40px;
-}
-
-.btnOutline:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.btnSolid {
-  width: 100%;
-  padding: 16px;
-  background: linear-gradient(135deg, var(--color-highlight), var(--color-secondary));
-  border: none;
-  border-radius: 12px;
-  color: white;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-  margin-bottom: 40px;
-  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
-}
-
-.btnSolid:hover {
-  opacity: 0.9;
 }
 
 .features {

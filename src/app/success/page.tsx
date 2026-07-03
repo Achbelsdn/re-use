@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Loader2, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
+import CreativeButton from '@/components/ui/CreativeButton';
 
 export default function SuccessPage() {
   const searchParams = useSearchParams();
@@ -94,11 +95,9 @@ export default function SuccessPage() {
             <div style={{ fontSize: '3rem', marginBottom: '20px' }}>❌</div>
             <h1 style={{ fontSize: '1.5rem', marginBottom: '10px', color: '#ef4444' }}>Oups...</h1>
             <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '30px' }}>{errorMsg}</p>
-            <Link href="/">
-              <button style={{ background: 'white', color: 'black', padding: '12px 24px', borderRadius: '8px', border: 'none', fontWeight: 600, cursor: 'pointer', fontSize: '1rem' }}>
-                Retour à l'accueil
-              </button>
-            </Link>
+            <CreativeButton href="/">
+              Retour à l'accueil
+            </CreativeButton>
           </div>
         )}
 
