@@ -1,6 +1,7 @@
 export const navLinks = [
   { title: 'Marketplace', href: '/' },
   { title: 'Templates', href: '/templates' },
+  { title: 'Docs', href: '/docs' },
   { title: 'Vendre des Composants', href: '/sell' }
 ];
 
