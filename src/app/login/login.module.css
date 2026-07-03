@@ -1,0 +1,91 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 40px 20px;
+  width: 100%;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 40px;
+  text-align: center;
+  max-width: 400px;
+}
+
+.form {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 450px;
+  backdrop-filter: blur(10px);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.inputGroup label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.inputGroup input {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 15px;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.inputGroup input:focus {
+  border-color: var(--color-highlight);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, var(--color-highlight), var(--color-secondary));
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  margin-bottom: 25px;
+}
+
+.submitBtn:hover {
+  opacity: 0.9;
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer a {
+  color: var(--color-highlight);
+  font-weight: 500;
+  text-decoration: underline;
+}

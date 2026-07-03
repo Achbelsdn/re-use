@@ -1,0 +1,19 @@
+.nav {
+  display: none;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.el {
+  list-style: none;
+}
+
+

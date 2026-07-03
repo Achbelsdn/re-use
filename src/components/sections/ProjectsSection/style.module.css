@@ -1,0 +1,183 @@
+.projects {
+  padding: 0 var(--padding-container);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.filterBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 32px;
+}
+
+.filterLeft,
+.filterRight {
+  display: flex;
+  gap: 10px;
+}
+
+.filterChip {
+  padding: 8px 18px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.filterChip:hover {
+  border-color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.8);
+}
+
+.filterActive {
+  border-color: var(--color-highlight);
+  color: var(--color-white);
+  background: rgba(139, 92, 246, 0.1);
+}
+
+/* Grid rules handled at the bottom via media queries */
+
+.card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.card:hover {
+  border-color: rgba(255,255,255,0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.cardImage {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: rgba(255,255,255,0.02);
+}
+
+.cardImage img {
+  transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.card:hover .cardImage img {
+  transform: scale(1.05);
+}
+
+.cardTag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 3px 10px;
+  background: rgba(139, 92, 246, 0.85);
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: 6px;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.cardLikes {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: rgba(255,255,255,0.8);
+  font-size: 0.7rem;
+  font-weight: 500;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 2;
+  font-family: inherit;
+}
+
+.cardLikes:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.cardLiked {
+  color: #ec4899;
+  cursor: pointer;
+}
+
+.cardInfo {
+  padding: 16px;
+}
+
+.cardTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.cardDesc {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardPrice {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.cardType {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.3);
+  padding: 3px 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 9999px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding-bottom: 80px;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

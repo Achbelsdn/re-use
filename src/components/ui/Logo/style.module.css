@@ -1,0 +1,16 @@
+.logoWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: 130px;
+  width: auto;
+  object-fit: contain;
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+  transform-origin: left center;
+}
+
+.logoWrapper:hover .logoImage {
+  opacity: 0.85;
+}

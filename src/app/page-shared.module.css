@@ -1,0 +1,25 @@
+.main {
+  min-height: 100vh;
+  padding-top: 120px;
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto 50px;
+}

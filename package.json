@@ -1,0 +1,45 @@
+{
+  "name": "awwwards-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@react-email/render": "^2.0.9",
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
+    "@supabase/supabase-js": "^2.110.0",
+    "fedapay": "^1.2.5",
+    "framer-motion": "^10.15.0",
+    "gsap": "^3.12.2",
+    "locomotive-scroll": "^5.0.0-beta.8",
+    "lucide-react": "^1.23.0",
+    "next": "13.4.12",
+    "prettier": "^3.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "resend": "^6.16.0",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^13.4.12",
+    "@types/locomotive-scroll": "^4.1.0",
+    "@types/node": "20.4.5",
+    "@types/react": "18.2.17",
+    "@types/react-dom": "18.2.7",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "eslint": "^8.45.0",
+    "eslint-config-next": "13.4.12",
+    "eslint-config-prettier": "^8.9.0",
+    "eslint-config-standard-with-typescript": "^37.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^16.0.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.33.0",
+    "typescript": "^5.1.6"
+  }
+}
